@@ -21,7 +21,7 @@ import os
 
 if input("Read old weights file? (enter for yes, 'n' to start new)") != 'n':
 	# open the latest weights file:
-	list_of_files = glob.glob('/home/yky/python/neuromancer/weights_*')
+	list_of_files = glob.glob('/home/yky/neuromancer/weights_*')
 	latest_file = max(list_of_files, key=os.path.getctime)
 	print("Loading file:", latest_file)
 	f = open(latest_file, "rb")
@@ -31,13 +31,13 @@ else:
 	print("Creating initial population...")
 	initial_pop_weights = []
 	for curr_sol in numpy.arange(0, soln_per_pop):
-		HL1_neurons = 10
+		HL1_neurons = 20
 		input_HL1_weights = numpy.random.uniform(low=-1.0, high=1.0, 
 												 size=(ANN.N, HL1_neurons))
-		HL2_neurons = 10
+		HL2_neurons = 20
 		HL1_HL2_weights = numpy.random.uniform(low=-1.0, high=1.0, 
 												 size=(HL1_neurons, HL2_neurons))
-		HL3_neurons = 8
+		HL3_neurons = 16
 		HL2_HL3_weights = numpy.random.uniform(low=-1.0, high=1.0, 
 												 size=(HL2_neurons, HL3_neurons))
 		output_neurons = ANN.N
@@ -100,7 +100,7 @@ print("Accuracy of the best solution is:", acc)
 
 # print("Weight matrix:\n", pop_weights_mat)
 
-name = str(ANN.N) + "D_10x10x8_" + method
+name = str(ANN.N) + "D_20x20x16_" + method
 print("Saving file:", name)
 f = open("weights_" + name + ".pkl", "wb")
 pickle.dump(pop_weights_mat, f)
