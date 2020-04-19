@@ -77,6 +77,7 @@ def threshold2(y):
 	"""
 
 # ***** This miraculously good-looking function was found by serendipity
+# The penalty is always a negative number, its best value is 0
 def joint_penalty(x, y):
 	k = 30.0			# "Steepness"
 	return numpy.exp(-k * (x **2 + y **2)) - numpy.exp(-2.0 * k * x * y)
@@ -102,7 +103,7 @@ def predict_outputs(weights_mat, activation="ReLU"):
 			y0 = sigmoid(y0)
 	x = x0
 	y = y0
-	for i in range(100):
+	for i in range(10):
 		x0 = x
 		y0 = y
 		x = perturb(x0)

@@ -8,7 +8,7 @@ import time
 # Genetic algorithm parameters:
 soln_per_pop = 12				# mating pool size (= # parents)
 num_parents_mating = 6			# population size
-num_generations = 200
+num_generations = 1000
 mutation_percent = 1			# mutation rate
 
 method = "ReLU"					# neuron's activation function
@@ -21,7 +21,7 @@ import os
 
 if input("Read old weights file? (enter for yes, 'n' to start new)") != 'n':
 	# open the latest weights file:
-	list_of_files = glob.glob('/home/yky/python/neuromancer/weights_*')
+	list_of_files = glob.glob('/home/yky/neuromancer/weights_*')
 	latest_file = max(list_of_files, key=os.path.getctime)
 	print("Loading file:", latest_file)
 	f = open(latest_file, "rb")
