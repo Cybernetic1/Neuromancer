@@ -103,7 +103,7 @@ def predict_outputs(weights_mat, activation="ReLU"):
 			y0 = sigmoid(y0)
 	x = x0
 	y = y0
-	for i in range(10):
+	for i in range(1):
 		x0 = x
 		y0 = y
 		x = perturb(x0)
