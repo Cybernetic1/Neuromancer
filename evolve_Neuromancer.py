@@ -6,9 +6,9 @@ import matplotlib.pyplot
 import time
 
 # Genetic algorithm parameters:
-soln_per_pop = 12				# mating pool size (= # parents)
-num_parents_mating = 6			# population size
-num_generations = 200
+soln_per_pop = 20				# mating pool size (= # parents)
+num_parents_mating = 10			# population size
+num_generations = 5000
 mutation_percent = 1			# mutation rate
 
 method = "ReLU"					# neuron's activation function
@@ -57,7 +57,7 @@ pop_weights_vector = genetic_algorithm.mat_to_vector(pop_weights_mat)
 accuracies = numpy.empty(shape=(num_generations))
 
 for generation in range(num_generations):
-	print("Generation : ", generation)
+	print("Generation:", generation)
 
 	# converting the solutions from being vectors to matrices.
 	pop_weights_mat = genetic_algorithm.vector_to_mat(pop_weights_vector, 
@@ -67,8 +67,8 @@ for generation in range(num_generations):
 	fitness = ANN.fitness(pop_weights_mat, 
 						  activation = method)
 	accuracies[generation] = fitness[0]
-	print("Fitness")
-	print(fitness)
+	# print("Fitness")
+	# print(fitness)
 
 	# Selecting the best parents in the population for mating.
 	parents = genetic_algorithm.select_mating_pool(pop_weights_vector, 

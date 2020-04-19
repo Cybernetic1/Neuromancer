@@ -38,7 +38,7 @@ def select_mating_pool(pop, fitness, num_parents):
 		except IndexError:
 			max_fitness_idx = 0
 		parents[parent_num, :] = pop[max_fitness_idx, :]
-		fitness[max_fitness_idx] = -1.0e12
+		fitness[max_fitness_idx] = -1.0e12		# the worst fitness value
 	return parents
 
 def crossover(parents, offspring_size):
@@ -48,9 +48,9 @@ def crossover(parents, offspring_size):
 
 	for k in range(offspring_size[0]):
 		# Index of the first parent to mate.
-		parent1_idx = k%parents.shape[0]
+		parent1_idx = k % parents.shape[0]
 		# Index of the second parent to mate.
-		parent2_idx = (k+1)%parents.shape[0]
+		parent2_idx = (k + 1) % parents.shape[0]
 		# The new offspring will have its first half of its genes taken from the first parent.
 		offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
 		# The new offspring will have its second half of its genes taken from the second parent.
